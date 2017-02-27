@@ -1,0 +1,29 @@
+Heuristics
+- proximity to center
+- proximity to nearest wall
+- proximity to closest opponent
+- proximity to opponent center-mass
+- proximity to my center-mass
+- number of my free spots
+- number of opponent free spots
+- zone of controle (Using side streching methode)
+- zone of controle (Using propagation methode)
+- (X2) 0% : 50%
+
+Evolver Settings
+- Values range from 1 to -1
+- Generation size:
+- Mutation rate: [ ] [ ]
+- Tests size:
+- Test Maps:
+
+Tools
+- Checker
+-- Returns winner && control percentage.
+
+- Mutater
+-- Copies configuration file && randomly modifies values.
+
+- Tester
+-- Launches multiple games && uses Checker to mesure performance.
+-- if stats are better, overwrite configuration file with new values.
