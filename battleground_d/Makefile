@@ -19,7 +19,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 IFLAGS = -I./includes -I../libft
 NCURSES = -lncurses
-SRC = main.c
+SRC = main.c parser.c error.c
 
 OBJ = $(addprefix $(ODIR)/, $(addsuffix .o, $(basename $(SRC))))
 LIBFT = ../libft/libftprintf.a
@@ -53,3 +53,5 @@ $(ODIR)/%.o: $(SDIR)/%.c $(DEP)
 	@$(CC) -c -o $@ $< $(CFLAGS) $(IFLAGS)
 
 .PHONY: fclean clean all
+
+.SILENT:

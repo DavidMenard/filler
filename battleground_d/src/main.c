@@ -25,6 +25,7 @@ int main(void)
 {
 	t_data	data;
 
+	sft_data_init(&data);
 	ft_parser(&data);
 	return (0);
 }

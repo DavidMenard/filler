@@ -18,7 +18,7 @@
 typedef struct		s_turn
 {
 	char			**grid;
-}
+}					t_turn;
 
 typedef struct		s_data
 {

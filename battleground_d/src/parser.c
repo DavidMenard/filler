@@ -18,7 +18,12 @@ static char	*sft_extract_name(char *str)
 	int		i;
 
 	front = ft_strchrend(str, '/');
-	return (ft_strsub(front, 0, ft_strlen(front) - 1));
+	if (!front)
+		front = str;
+	i = 0;
+	while (front[i] && front[i] != '.')
+		i++;
+	return (ft_strsub(front, 1, i - 1));
 }
 
 static void	sft_get_players(t_data *data)
@@ -44,11 +49,11 @@ static void	sft_get_players(t_data *data)
 		free(str);
 	}
 	free(str);
-	if (!data->p1_name || !data->p2_name)
-		ft_error("Invalid input");
 }
 
 void	ft_parser(t_data *data)
 {
 	sft_get_players(data);
+	if (!data->p1_name || !data->p2_name)
+		ft_error("Invalid input");
 }
