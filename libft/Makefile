@@ -6,7 +6,7 @@
 #    By: dmenard <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/04 10:03:47 by dmenard           #+#    #+#              #
-#    Updated: 2017/02/27 17:29:40 by dmenard          ###   ########.fr        #
+#    Updated: 2017/03/01 18:43:31 by dmenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,16 +57,16 @@ $(NAME): $(SRC) $(DEP)
 	@$(CC) $(CFLAGS) -I./ -c $(SRC)
 	@ar rc $@ $(OBJ) $(POBJ)
 	@ranlib $(NAME)
-	@echo  $(C_GREEN)"[$(NAME)]		[Compilation Completed]"$(C_RESET)
+	@echo  $(C_GREEN)"[$(NAME)]	[Compilation Completed]"$(C_RESET)
 
 clean:
 	@rm -f $(OBJ)
-	@echo $(C_YELLOW)"[$(NAME)]		[Object Files Deleted]"$(C_RESET)
+	@echo $(C_YELLOW)"[$(NAME)]	[Object Files Deleted]"$(C_RESET)
 
 fclean: clean cleanexe
 
 cleanexe:
 	@rm -f $(NAME)
-	@echo  $(C_YELLOW)"[$(NAME)]		[Library Deleted]"$(C_RESET)
+	@echo  $(C_YELLOW)"[$(NAME)]	[Library Deleted]"$(C_RESET)
 
 re: fclean all

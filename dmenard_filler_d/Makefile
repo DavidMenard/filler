@@ -6,7 +6,7 @@
 #    By: dmenard <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/21 07:52:30 by dmenard           #+#    #+#              #
-#    Updated: 2017/02/27 17:56:13 by dmenard          ###   ########.fr        #
+#    Updated: 2017/03/01 18:39:39 by dmenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,17 +31,17 @@ all:		$(NAME) $(LIBFT)
 
 $(NAME):	$(OBJ) $(DEP)
 	@$(CC) $(OBJ) $(LIBFT) -o $@ $(IFLAGS)
-	@echo  $(C_GREEN)"[$(NAME)]	[Compilation Completed]"$(C_RESET)
+	@echo  $(C_GREEN)"[$(NAME)]		[Compilation Completed]"$(C_RESET)
 
 clean:
 	@make clean -C ../libft
 	@rm -rf $(ODIR)
-	@echo $(C_YELLOW)"[$(NAME)]	[Object Files Deleted]"$(C_RESET)
+	@echo $(C_YELLOW)"[$(NAME)]		[Object Files Deleted]"$(C_RESET)
 
 fclean:		clean
 	@make cleanexe -C ../libft
 	@rm -f $(NAME)
-	@echo  $(C_YELLOW)"[$(NAME)]	[Executable Deleted]"$(C_RESET)
+	@echo  $(C_YELLOW)"[$(NAME)]		[Executable Deleted]"$(C_RESET)
 
 $(LIBFT):
 	@make -C ../libft

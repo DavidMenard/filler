@@ -6,7 +6,7 @@
 #    By: dmenard <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/22 17:22:18 by dmenard           #+#    #+#              #
-#    Updated: 2017/02/27 18:26:50 by dmenard          ###   ########.fr        #
+#    Updated: 2017/03/01 18:43:00 by dmenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,8 @@ clean:
 fclean:
 	@make fclean -C $(PL_PATH)
 	@make fclean -C $(BA_PATH)
-	@if [ -f $(PL_EXE) ]; then rm $(PL_EXE); fi;
-	@if [ -f $(BA_EXE) ]; then rm $(BA_EXE); fi;
+	@if [ -f dmenard.filler ]; then rm dmenard.filler; fi;
+	@if [ -f battleground ]; then rm battleground; fi;
 	@echo $(C_YELLOW)"[All binaries destroyed]"$(C_RESET)
 
 re: fclean all

@@ -6,7 +6,7 @@
 #    By: dmenard <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/21 07:52:30 by dmenard           #+#    #+#              #
-#    Updated: 2017/02/27 18:20:16 by dmenard          ###   ########.fr        #
+#    Updated: 2017/03/01 18:16:34 by dmenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 IFLAGS = -I./includes -I../libft
 NCURSES = -lncurses
-SRC = main.c parser.c error.c
+SRC = main.c parser.c parser_get_turns.c error.c print_debug.c win_grid.c \
+	  input.c win_ban.c scores.c
 
 OBJ = $(addprefix $(ODIR)/, $(addsuffix .o, $(basename $(SRC))))
 LIBFT = ../libft/libftprintf.a
@@ -30,7 +31,7 @@ DEP = ./includes/battle.h $(LIBFT)
 all:		$(NAME) $(LIBFT)
 
 $(NAME):	$(OBJ) $(DEP)
-	@$(CC) $(OBJ) $(LIBFT) -o $@ $(IFLAGS)
+	@$(CC) $(OBJ) $(LIBFT) $(NCURSES) -o $@ $(IFLAGS)
 	@echo  $(C_GREEN)"[$(NAME)]		[Compilation Completed]"$(C_RESET)
 
 clean:
