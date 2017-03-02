@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filler.h                                           :+:      :+:    :+:   */
+/*   battle.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/27 14:18:14 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/02 13:36:36 by dmenard          ###   ########.fr       */
+/*   Created: 2017/03/02 18:50:41 by dmenard           #+#    #+#             */
+/*   Updated: 2017/03/02 18:51:21 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLER_H
-# define FILLER_H
+#ifndef BATTLE_H
+# define BATTLE_H
 
 # include "libft.h"
 # include <ncurses.h>
 # include <locale.h>
 
-# define	BAN_HEIGHT	7
-# define	BAN_WIDTH	110
+# define BAN_HEIGHT	7
+# define BAN_WIDTH	110
 
 typedef struct		s_turn
 {

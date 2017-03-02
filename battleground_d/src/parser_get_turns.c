@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 10:37:39 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/01 13:03:25 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/02 18:54:46 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static t_turn	*sft_create_turn(int len, int lines)
 {
 	char	*str;
 	int		ret;
-	t_turn *turn;
+	t_turn	*turn;
 	int		i;
 
 	turn = (t_turn*)ft_smalloc(sizeof(t_turn));
@@ -38,9 +38,9 @@ static t_turn	*sft_create_turn(int len, int lines)
 	return (turn);
 }
 
-static void	sft_transfer_turns(t_data *data, t_list *head)
+static void		sft_transfer_turns(t_data *data, t_list *head)
 {
-	t_list *todel;
+	t_list	*todel;
 	int		i;
 
 	data->turns_nbr = ft_lstcount(head);
@@ -56,7 +56,7 @@ static void	sft_transfer_turns(t_data *data, t_list *head)
 	}
 }
 
-void	ft_get_turns(t_data *data)
+void			ft_get_turns(t_data *data)
 {
 	char	*str;
 	int		ret;
@@ -71,7 +71,8 @@ void	ft_get_turns(t_data *data)
 		if (ret == -1)
 			ft_error("Read error");
 		if (!ft_strncmp(str, "    ", 4))
-			ft_lstadd(&head, ft_lstnew_ref(sft_create_turn(data->gridsize_x, data->gridsize_y), sizeof(t_turn)));
+			ft_lstadd(&head, ft_lstnew_ref(sft_create_turn(
+			data->gridsize_x, data->gridsize_y), sizeof(t_turn)));
 		free(str);
 	}
 	free(str);

@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 18:49:48 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/01 13:04:17 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/02 18:53:10 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	sft_get_grid_size(t_data *data)
 	free(str);
 }
 
-void	ft_parser(t_data *data)
+void		ft_parser(t_data *data)
 {
 	sft_get_players(data);
 	if (!data->p1_name || !data->p2_name)

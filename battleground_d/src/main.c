@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:16:04 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/02 13:31:47 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/02 18:52:46 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@ static void	sft_ncurses_init(void)
 	init_pair(7, COLOR_WHITE, COLOR_BLACK);
 	init_pair(8, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(9, COLOR_BLACK, 32);
-//	init_pair(3, COLOR_WHITE, 30);
-//	init_pair(4, COLOR_WHITE, 31);
-//	init_pair(5, COLOR_BLACK, 32);
-//	init_pair(6, COLOR_BLACK, 33);
 }
 
 static void	sft_data_init(t_data *data)
@@ -57,7 +53,7 @@ static void	sft_data_init(t_data *data)
 	data->neutral_control = 0;
 }
 
-int main(void)
+int			main(void)
 {
 	t_data	data;
 
