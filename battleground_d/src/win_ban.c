@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 15:13:16 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/01 18:35:38 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/02 18:18:29 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	sft_put_name(char *name, t_data *data, int x, int player)
 {
 	WINDOW	*win_ban;
 	int		tx;
+	char	*tmp;
 
 	win_ban = data->win_ban;
 	tx = x - (ft_strlen(name) + 2) / 2;
@@ -24,12 +25,14 @@ static void	sft_put_name(char *name, t_data *data, int x, int player)
 		wattron(win_ban, COLOR_PAIR(3));
 	else
 		wattron(win_ban, COLOR_PAIR(5));
+	tmp = ft_itoa(data->p1_pieces);
 	wprintw(win_ban, "[%s]", name);
-	wmove(win_ban, BAN_HEIGHT / 2 + 1, x - 2);
+	wmove(win_ban, BAN_HEIGHT / 2 + 1, x - ((ft_strlen(tmp) + 2) / 2));
+	free(tmp);
 	if (player == 1)
-		wprintw(win_ban, "-%d-%%", data->p1_pieces);
+		wprintw(win_ban, "(%dP)", data->p1_pieces);
 	else
-		wprintw(win_ban, "-%d-%%", data->p2_pieces);
+		wprintw(win_ban, "(%dP)", data->p2_pieces);
 }
 
 static void	sft_put_banner(t_data *data, int x)
@@ -58,7 +61,10 @@ void	ft_update_win_ban(t_data *data)
 	WINDOW	*win_ban;
 	
 	win_ban = data->win_ban;
-	ft_get_scores(data);
+	werase(win_ban);
+	wattron(win_ban, COLOR_PAIR(8));
+	wborder(win_ban, ' ', ' ', ' ', ACS_HLINE,
+	' ', ' ', ' ', ' ');
 	sft_put_banner(data, 24);
 	sft_put_name(data->p1_name, data, 12, 1);
 	sft_put_name(data->p2_name, data, 97, 2);
@@ -68,10 +74,12 @@ void	ft_create_win_ban(t_data *data)
 	WINDOW	*win_ban;
 
 	data->win_ban = newwin(BAN_HEIGHT, BAN_WIDTH, 0, (COLS - BAN_WIDTH) / 2);
+	if (COLS < BAN_WIDTH)
+	{
+		endwin();
+		ft_error("Need a bigger Terminal");
+	}
 	win_ban = data->win_ban;
-	wattron(win_ban, COLOR_PAIR(7));
-	wborder(win_ban, ACS_VLINE, ACS_VLINE, ACS_HLINE, ACS_HLINE,
-	ACS_ULCORNER, ACS_URCORNER, ACS_LLCORNER, ACS_LRCORNER);
 	ft_update_win_ban(data);
 	wrefresh(win_ban);
 }

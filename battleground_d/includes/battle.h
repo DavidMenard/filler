@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:18:14 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/01 18:16:08 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/02 13:36:36 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <ncurses.h>
 # include <locale.h>
 
-# define	BAN_HEIGHT	10
+# define	BAN_HEIGHT	7
 # define	BAN_WIDTH	110
 
 typedef struct		s_turn
@@ -48,6 +48,7 @@ void				*ft_smalloc(size_t n);
 void				ft_error(char *errmsg);
 void				ft_input(t_data *data);
 void				ft_get_scores(t_data *data);
+void				ft_get_scores_back(t_data *data);
 
 void				ft_parser(t_data *data);
 void				ft_get_turns(t_data *data);
