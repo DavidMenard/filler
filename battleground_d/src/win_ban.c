@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 15:13:16 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/02 18:18:29 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/02 19:40:39 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	ft_update_win_ban(t_data *data)
 	win_ban = data->win_ban;
 	werase(win_ban);
 	wattron(win_ban, COLOR_PAIR(8));
-	wborder(win_ban, ' ', ' ', ' ', ACS_HLINE,
-	' ', ' ', ' ', ' ');
+	wmove(win_ban, 6, 0);
+	whline(win_ban, '=', BAN_WIDTH);
 	sft_put_banner(data, 24);
 	sft_put_name(data->p1_name, data, 12, 1);
 	sft_put_name(data->p2_name, data, 97, 2);
