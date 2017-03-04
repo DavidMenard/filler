@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:16:04 by dmenard           #+#    #+#             */
-/*   Updated: 2017/02/27 15:11:08 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/04 08:44:18 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 int main(void)
 {
-	char *str;
+	t_data data;
 
+	if (!ft_parser(&data))
+		return (-1);
 	write(1, "0 0\n", 4);
-	while (get_next_line(0, &str))
-		ft_putendl_fd(str, 2);
 	return (0);
 }
