@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filler.h                                           :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/27 14:18:14 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/06 12:29:20 by dmenard          ###   ########.fr       */
+/*   Created: 2017/03/06 12:26:29 by dmenard           #+#    #+#             */
+/*   Updated: 2017/03/06 12:34:44 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLER_H
-# define FILLER_H
+#include "filler.h"
 
-#include "libft.h"
-
-typedef struct		s_data
+void	ft_print_grid(t_data *data)
 {
-	int				pnbr;
-	int				gx;
-	int				gy;
-	char			**grid;
-}					t_data;
+	int	i;
 
-int				ft_parser(t_data *data);
-
-
-void			ft_print_grid(t_data *data);
-
-#endif
+	if (data)
+	{
+		i = 0;
+		while (i < data->gy)
+			ft_putendl_fd(data->grid[i++], 2);
+	}
+	ft_putchar_fd('\n', 2);
+}

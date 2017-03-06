@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 08:28:24 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/04 08:48:44 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/06 12:29:54 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	sft_getpnbr(t_data *data)
 	return (1);
 }
 
-static void	sft_get_grid_size(t_data *data)
+static int	sft_get_grid_size(t_data *data)
 {
 	char	*str;
 	char	*temp;
@@ -49,25 +49,58 @@ static void	sft_get_grid_size(t_data *data)
 	while ((ret = get_next_line(0, &str)))
 	{
 		if (ret == -1)
-			ft_error("Read error");
+		{
+			ft_putendl_fd("Read error", 2);
+			return (0);
+		}
 		if (!ft_strncmp(str, "Plateau ", 8))
 		{
 			temp = ft_strchr(str, ' ') + 1;
-			data->gridsize_y = ft_atoi(temp);
-			data->gridsize_x = ft_atoi(ft_strchr(temp, ' '));
+			data->gy = ft_atoi(temp);
+			data->gx = ft_atoi(ft_strchr(temp, ' '));
 			break ;
 		}
 		free(str);
 		str = NULL;
 	}
 	free(str);
+	return (1);
+}
+
+static int	sft_get_grid(t_data *data)
+{
+	char	*str;
+	int		ret;
+	char	**grid;
+	int		i;
+
+	if (!(grid = (char**)malloc(sizeof(char*) * data->gy)))
+		return (0);
+	str = NULL;
+	ret = get_next_line(0, &str);
+	if (!ret || ret == -1 || strncmp(str, "    0", 5))
+		return (0);
+	free(str);
+	i = 0;
+	while ((ret = get_next_line(0, &str)) && ret != -1 && i < data->gy)
+	{
+		grid[i++] = ft_strdup(ft_strchr(str, ' ') + 1);
+		free(str);
+		str = NULL;
+	}
+	free(str);
+	data->grid = grid;
+	return (1);
 }
 
 int		ft_parser(t_data *data)
 {
 	if (!sft_getpnbr(data))
 		return (0);
-	if (!(sft_get_grid(data)) || !data->gx || !data->gy)
+	if (!(sft_get_grid_size(data)) || !data->gx || !data->gy)
 		return (0);
+	if (!(sft_get_grid(data) || !data->grid))
+		return (0);
+	ft_print_grid(data);
 	return (1);
 }
