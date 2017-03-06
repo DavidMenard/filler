@@ -6,7 +6,7 @@
 #    By: dmenard <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/04 10:03:47 by dmenard           #+#    #+#              #
-#    Updated: 2017/03/02 17:53:06 by dmenard          ###   ########.fr        #
+#    Updated: 2017/03/06 14:26:35 by dmenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ SRC = ft_memset.c ft_atoi.c ft_bzero.c ft_strlen.c ft_memcpy.c ft_memccpy.c \
 	  pft_switchu.c pcft_hhu.c pcft_hu.c pcft_lu.c pcft_llu.c pcft_ju.c		\
 	  pcft_zu.c pft_parse_conv2.c ft_atoi_max.c ft_max.c ft_min.c			\
 	  ft_lstaddend.c ft_lstnew_ref.c ft_abs.c ft_atoi_safe.c ft_lstcount.c	\
-	  ft_lstget.c ft_round.c
+	  ft_lstget.c ft_round.c ft_charcount.c
 
 OBJ = $(SRC:.c=.o)
 all: $(NAME)

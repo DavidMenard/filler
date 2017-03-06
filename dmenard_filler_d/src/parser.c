@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 08:28:24 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/06 12:29:54 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/06 13:40:18 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int	sft_get_grid(t_data *data)
 		return (0);
 	free(str);
 	i = 0;
-	while ((ret = get_next_line(0, &str)) && ret != -1 && i < data->gy)
+	while ((ret = get_next_line(0, &str)) && ret != -1 && i < data->gy - 1)
 	{
 		grid[i++] = ft_strdup(ft_strchr(str, ' ') + 1);
 		free(str);
@@ -101,6 +101,9 @@ int		ft_parser(t_data *data)
 		return (0);
 	if (!(sft_get_grid(data) || !data->grid))
 		return (0);
-	ft_print_grid(data);
+//	if (!(sft_get_piece_size(data)) || !data->px || !data->py)
+//		return (0);
+//	ft_printf("%yx:%d\ny:%d\n", 2, data->px, data->py);//
+	ft_print_grid(data);//
 	return (1);
 }
