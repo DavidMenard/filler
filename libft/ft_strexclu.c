@@ -6,13 +6,15 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 09:42:38 by dmenard           #+#    #+#             */
-/*   Updated: 2017/02/04 05:01:18 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/07 19:54:52 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 ** return true if all the characters is the 1st str are also in the 2nd str.
 */
+
+#include "libft.h"
 
 int	ft_strexclu(const char *str, const char *ref)
 {

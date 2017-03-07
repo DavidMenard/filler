@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 10:00:29 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/06 14:26:20 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/07 19:57:27 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,4 +138,5 @@ int					ft_min(int v1, int v2);
 int					ft_atoi_safe(char *str, int *err);
 int					ft_round(float nb);
 int					ft_charcount(char *str, char c);
+int					ft_strexclu(const char *str, const char *ref);
 #endif

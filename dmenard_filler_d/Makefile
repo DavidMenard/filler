@@ -6,7 +6,7 @@
 #    By: dmenard <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/21 07:52:30 by dmenard           #+#    #+#              #
-#    Updated: 2017/03/06 12:29:29 by dmenard          ###   ########.fr        #
+#    Updated: 2017/03/07 19:43:51 by dmenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME = dmenard.filler
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 IFLAGS = -I./includes -I../libft
-SRC = main.c parser.c debug.c
+SRC = main.c parser.c debug.c parser_get_grid.c parser_get_piece.c
 
 OBJ = $(addprefix $(ODIR)/, $(addsuffix .o, $(basename $(SRC))))
 LIBFT = ../libft/libftprintf.a
