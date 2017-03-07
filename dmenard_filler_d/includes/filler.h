@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:18:14 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/07 19:49:31 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/08 00:49:25 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define FILLER_H
 
 #include "libft.h"
+
+typedef struct		s_move
+{
+	int				x;
+	int				y;
+	int				score;
+}					t_move;
 
 typedef struct		s_data
 {
@@ -24,6 +31,7 @@ typedef struct		s_data
 	int				py;
 	char			**piece;
 	char			**grid;
+	t_list			*moves;
 }					t_data;
 
 int				ft_parser(t_data *data);
@@ -32,6 +40,19 @@ int				ft_get_grid(t_data *data);
 int				ft_get_piece_size(t_data *data);
 int				ft_get_piece(t_data *data);
 
+void			ft_del_grid(t_data *data);
+void			ft_del_piece(t_data *data);
+void			ft_del_moves(t_data *data);
+
+void			ft_make_move(t_data *data);
+
 void			ft_print_grid(t_data *data);
+void			ft_print_moves(t_data *data);
+void			ft_print_input(void);
+void			ft_print_piece(t_data *data);
+
+int				ft_ismine(t_data *data, int x, int y);
+int				ft_ishis(t_data *data, int x, int y);
+int				ft_isfree(t_data *data, int x, int y);
 
 #endif

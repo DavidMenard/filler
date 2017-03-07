@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 19:42:51 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/07 20:01:14 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/07 23:24:39 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	ft_get_piece(t_data *data)
 	int		i;
 	char	**piece;
 
+	ret = 0;
 	if (!(piece = (char**)malloc(sizeof(char*) * data->py)))
 		return (0);
 	i = 0;
