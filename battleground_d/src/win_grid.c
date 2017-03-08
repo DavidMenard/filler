@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 13:13:01 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/02 18:24:08 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/08 04:50:45 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_update_win_grid(t_data *data)
 	int		i;
 
 	win_grid = data->win_grid;
-	wattron(win_grid, COLOR_PAIR(1));
+	wattron(win_grid, COLOR_PAIR(7));
 	wborder(win_grid, ACS_VLINE, ACS_VLINE, ACS_HLINE, ACS_HLINE,
 	ACS_DIAMOND, ACS_DIAMOND, ACS_DIAMOND, ACS_DIAMOND);
 	grid = data->turns[data->turn]->grid;

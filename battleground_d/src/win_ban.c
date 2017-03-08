@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 15:13:16 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/02 19:40:39 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/08 04:56:53 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	sft_put_banner(t_data *data, int x)
 	WINDOW	*win_ban;
 	
 	win_ban = data->win_ban;
-	wattron(win_ban, COLOR_PAIR(8));
+	wattron(win_ban, COLOR_PAIR(7));
 	wmove(win_ban, 1, x);
 	wprintw(win_ban, " ____        _   _   _       ____                           _ ");
 	wmove(win_ban, 2, x);
@@ -62,7 +62,7 @@ void	ft_update_win_ban(t_data *data)
 	
 	win_ban = data->win_ban;
 	werase(win_ban);
-	wattron(win_ban, COLOR_PAIR(8));
+	wattron(win_ban, COLOR_PAIR(7));
 	wmove(win_ban, 6, 0);
 	whline(win_ban, '=', BAN_WIDTH);
 	sft_put_banner(data, 24);

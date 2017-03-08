@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:16:04 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/02 19:39:37 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/08 04:55:46 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	sft_ncurses_init(void)
 	noecho();
 	curs_set(0);
 	start_color();
-	init_color(30, 824, 704, 396); //p1
+	init_color(30, 1000, 454, 196); //p1
 	init_color(31, 492, 760, 824); //p2
 	init_color(32, 900, 400, 200);
 	init_pair(1, COLOR_WHITE, COLOR_BLACK);
