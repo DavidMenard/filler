@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 20:16:00 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/08 02:14:18 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/08 02:50:08 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	sft_find_all_moves(t_data *data)
 				}
 				new->x = x;
 				new->y = y;
-				new->score = 0;
+				new->score = ft_get_score(data, x, y);
 				ft_lstadd(&data->moves, ft_lstnew_ref(new, sizeof(t_move*)));
 			}
 			x++;
@@ -75,11 +75,30 @@ static void	sft_find_all_moves(t_data *data)
 	}
 }
 
+static t_move	*sft_find_best_move(t_list *head)
+{
+	t_list *best;
+
+	best = head;
+	while (head)
+	{
+		if (((t_move*)head->content)->score > ((t_move*)best->content)->score)
+			best = head;
+		head = head->next;
+	}
+	return ((t_move*)best->content);
+}
+
 void	ft_make_move(t_data *data)
 {
+	t_move *best;
+
 	sft_find_all_moves(data);
 	if (data->moves)
-		ft_printf("%d %d\n", ((t_move*)data->moves->content)->y, ((t_move*)data->moves->content)->x);
+	{
+		best = sft_find_best_move(data->moves);
+		ft_printf("%d %d\n", best->y, best->x);
+	}
 	else
 		write(1, "0 0\n", 4);
 	ft_del_moves(data);

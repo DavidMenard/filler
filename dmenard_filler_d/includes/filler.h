@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:18:14 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/08 00:49:25 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/08 02:38:29 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ typedef struct		s_move
 	int				y;
 	int				score;
 }					t_move;
-
+/*
+typedef struct		s_weight
+{
+	int				dist_en;
+}
+*/
 typedef struct		s_data
 {
 	int				pnbr;
@@ -45,6 +50,7 @@ void			ft_del_piece(t_data *data);
 void			ft_del_moves(t_data *data);
 
 void			ft_make_move(t_data *data);
+int				ft_get_score(t_data *data, int x, int y);
 
 void			ft_print_grid(t_data *data);
 void			ft_print_moves(t_data *data);
