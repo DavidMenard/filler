@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 02:19:28 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/08 04:27:24 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/08 05:43:39 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ int		ft_get_score(t_data *data, int x, int y)
 
 	disen = sft_get_distance_en(data, x, y);
 	diswall = sft_get_dis_wall(data, x, y);
+	
 	return (disen);
 }

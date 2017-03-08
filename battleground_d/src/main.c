@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:16:04 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/08 04:55:46 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/08 06:36:24 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void	sft_data_init(t_data *data)
 	data->p1_control = 0;
 	data->p2_control = 0;
 	data->neutral_control = 0;
+	data->frame = 0;
 }
 
 int			main(void)
@@ -63,10 +64,15 @@ int			main(void)
 	ft_get_scores(&data);
 	ft_create_win_grid(&data);
 	keypad(data.win_grid, 1);
+	nodelay(data.win_grid, 1);//
 	ft_create_win_ban(&data);
 	while (42)
 	{
-		ft_input(&data);
+		if (!ft_input(&data))
+			usleep(3000);
+		data.frame++;
+		if (data.frame > 1024)
+			data.frame = 0;
 		ft_update_win_ban(&data);
 		ft_update_win_grid(&data);
 		wnoutrefresh(data.win_ban);

@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 18:50:41 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/02 18:51:21 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/08 06:31:25 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ typedef struct		s_data
 	int				p1_control;
 	int				p2_control;
 	int				neutral_control;
+	int				frame;
 }					t_data;
 
 void				*ft_smalloc(size_t n);
 void				ft_error(char *errmsg);
-void				ft_input(t_data *data);
+int				ft_input(t_data *data);
 void				ft_get_scores(t_data *data);
 void				ft_get_scores_back(t_data *data);
 

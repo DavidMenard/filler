@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 15:13:16 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/08 04:56:53 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/08 06:44:44 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,25 @@ static void	sft_put_banner(t_data *data, int x)
 	WINDOW	*win_ban;
 	
 	win_ban = data->win_ban;
+
 	wattron(win_ban, COLOR_PAIR(7));
+//	x += data->frame % 2 - 1;
 	wmove(win_ban, 1, x);
 	wprintw(win_ban, " ____        _   _   _       ____                           _ ");
 	wmove(win_ban, 2, x);
 	wprintw(win_ban, "| __ )  __ _| |_| |_| | ___ / ___|_ __ ___  _   _ _ __   __| |");
 	wmove(win_ban, 3, x);
 	wprintw(win_ban, "|  _ \\ / _` | __| __| |/ _ \\ |  _| '__/ _ \\| | | | '_ \\ / _` |");
+	if (data->frame % 2)
+		wattron(win_ban, COLOR_PAIR(7));
+	else
+		wattron(win_ban, COLOR_PAIR(8));
 	wmove(win_ban, 4, x);
 	wprintw(win_ban, "| |_) | (_| | |_| |_| |  __/ |_| | | | (_) | |_| | | | | (_| |");
 	wmove(win_ban, 5, x);
 	wprintw(win_ban, "|____/ \\__,_|\\__|\\__|_|\\___|\\____|_|  \\___/ \\__,_|_| |_|\\__,_|");
 	wattron(win_ban, COLOR_PAIR(7));
-	wmove(win_ban, 1, x + 37);
+	wmove(win_ban, 1, x + 37);// - data->frame % 2 - 1);
 	wprintw(win_ban, "FILLER");
 }
 
