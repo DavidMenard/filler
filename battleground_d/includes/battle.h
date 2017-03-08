@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 18:50:41 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/08 06:31:25 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/08 07:27:24 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 
 # define BAN_HEIGHT	7
 # define BAN_WIDTH	110
+
+# define C_RED "\x1b[31m"
+# define C_GREEN "\x1b[32m"
+# define C_RESET "\x1b[0m"
 
 typedef struct		s_turn
 {

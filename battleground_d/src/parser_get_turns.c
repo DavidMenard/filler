@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 10:37:39 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/02 18:54:46 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/08 07:28:46 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static t_turn	*sft_create_turn(int len, int lines)
 		i++;
 	}
 	free(str);
+	ft_putchar('>');//
 	return (turn);
 }
 
@@ -66,6 +67,7 @@ void			ft_get_turns(t_data *data)
 	str = NULL;
 	i = 0;
 	head = NULL;
+	ft_putstr(C_GREEN);
 	while ((ret = get_next_line(0, &str)))
 	{
 		if (ret == -1)
@@ -76,5 +78,6 @@ void			ft_get_turns(t_data *data)
 		free(str);
 	}
 	free(str);
+	ft_putstr(C_RESET);
 	sft_transfer_turns(data, head);
 }
