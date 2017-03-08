@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 15:13:16 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/08 06:44:44 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/08 07:15:53 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,19 @@ static void	sft_put_banner(t_data *data, int x)
 	wattron(win_ban, COLOR_PAIR(7));
 //	x += data->frame % 2 - 1;
 	wmove(win_ban, 1, x);
+	wattron(win_ban, COLOR_PAIR(8 + data->frame % 2));
 	wprintw(win_ban, " ____        _   _   _       ____                           _ ");
 	wmove(win_ban, 2, x);
+	wattron(win_ban, COLOR_PAIR(9 + data->frame % 2));
 	wprintw(win_ban, "| __ )  __ _| |_| |_| | ___ / ___|_ __ ___  _   _ _ __   __| |");
 	wmove(win_ban, 3, x);
+	wattron(win_ban, COLOR_PAIR(10 + data->frame % 2));
 	wprintw(win_ban, "|  _ \\ / _` | __| __| |/ _ \\ |  _| '__/ _ \\| | | | '_ \\ / _` |");
-	if (data->frame % 2)
-		wattron(win_ban, COLOR_PAIR(7));
-	else
-		wattron(win_ban, COLOR_PAIR(8));
 	wmove(win_ban, 4, x);
+	wattron(win_ban, COLOR_PAIR(11 + data->frame % 2));
 	wprintw(win_ban, "| |_) | (_| | |_| |_| |  __/ |_| | | | (_) | |_| | | | | (_| |");
 	wmove(win_ban, 5, x);
+	wattron(win_ban, COLOR_PAIR(12 + data->frame % 2));
 	wprintw(win_ban, "|____/ \\__,_|\\__|\\__|_|\\___|\\____|_|  \\___/ \\__,_|_| |_|\\__,_|");
 	wattron(win_ban, COLOR_PAIR(7));
 	wmove(win_ban, 1, x + 37);// - data->frame % 2 - 1);
@@ -68,9 +69,14 @@ void	ft_update_win_ban(t_data *data)
 	
 	win_ban = data->win_ban;
 	werase(win_ban);
-	wattron(win_ban, COLOR_PAIR(7));
+	wattron(win_ban, COLOR_PAIR(13));// + data->frame % 2));
 	wmove(win_ban, 6, 0);
 	whline(win_ban, '=', BAN_WIDTH);
+	wattron(win_ban, COLOR_PAIR(11));// + data->frame % 2));
+	wmove(win_ban, 6, 0);
+	waddch(win_ban, '[');
+	wmove(win_ban, 6, BAN_WIDTH - 1);
+	waddch(win_ban, ']');
 	sft_put_banner(data, 24);
 	sft_put_name(data->p1_name, data, 12, 1);
 	sft_put_name(data->p2_name, data, 97, 2);
