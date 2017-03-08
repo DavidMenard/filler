@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 20:16:00 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/08 00:49:47 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/08 01:54:56 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	sft_can_place(int x, int y, t_data *data)
 					return (0);
 				if (ft_ismine(data, x + px, y + py))
 					mychars++;
-				else if(!ft_isfree(data, x + py, y + py))
+				else if(!ft_isfree(data, x + px, y + py))
 					return (0);
 				if (mychars > 1)
 					return (0);
@@ -57,7 +57,7 @@ static void	sft_find_all_moves(t_data *data)
 		x = 0;
 		while (x < data->gx)
 		{
-			if (sft_can_place(y, x, data))
+			if (sft_can_place(x, y, data))
 			{
 				if (!(new = (t_move*)malloc(sizeof(t_move))))
 				{
@@ -78,9 +78,8 @@ static void	sft_find_all_moves(t_data *data)
 void	ft_make_move(t_data *data)
 {
 	sft_find_all_moves(data);
-	ft_print_piece(data);//
 	if (data->moves)
-		ft_printf("%d %d\n", ((t_move*)data->moves->content)->x, ((t_move*)data->moves->content)->y);
+		ft_printf("%d %d\n", ((t_move*)data->moves->content)->y, ((t_move*)data->moves->content)->x);
 	else
 		write(1, "0 0\n", 4);
 	ft_del_moves(data);
