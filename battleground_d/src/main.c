@@ -50,9 +50,9 @@ static void	sft_standard_colors(void)
 	init_pair(7, COLOR_WHITE, COLOR_BLACK);
 	init_pair(8, COLOR_RED, COLOR_BLACK);
 	init_pair(9, COLOR_RED, COLOR_BLACK);
-	init_pair(10, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(10, COLOR_RED, COLOR_BLACK);
 	init_pair(11, COLOR_YELLOW, COLOR_BLACK);
-	init_pair(12, COLOR_WHITE, COLOR_BLACK);
+	init_pair(12, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(13, COLOR_WHITE, COLOR_BLACK);
 
 }
