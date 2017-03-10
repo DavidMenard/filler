@@ -63,5 +63,5 @@ int		ft_get_score(t_data *data, int x, int y)
 	disen = sft_get_distance_en(data, x, y);
 	diswall = sft_get_dis_wall(data, x, y);
 	
-	return (disen);
+	return (disen + diswall * 0);
 }

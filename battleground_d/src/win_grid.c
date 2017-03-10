@@ -72,15 +72,12 @@ void	ft_update_win_grid(t_data *data)
 
 void	ft_create_win_grid(t_data *data)
 {
-	WINDOW	*win_grid;
-
 	if (COLS < data->gridsize_x * 2 + 4)
 	{
 		endwin();
 		ft_error("Need bigger terminal");
 	}
 	data->win_grid = newwin(data->gridsize_y + 2, data->gridsize_x * 2 + 4, BAN_HEIGHT, (COLS - (data->gridsize_x * 2)) / 2);
-	win_grid = data->win_grid;
 	ft_update_win_grid(data);
 	wrefresh(data->win_grid);
 }

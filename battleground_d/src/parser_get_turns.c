@@ -61,11 +61,9 @@ void			ft_get_turns(t_data *data)
 {
 	char	*str;
 	int		ret;
-	int		i;
 	t_list	*head;
 
 	str = NULL;
-	i = 0;
 	head = NULL;
 	ft_putstr(C_GREEN);
 	while ((ret = get_next_line(0, &str)))

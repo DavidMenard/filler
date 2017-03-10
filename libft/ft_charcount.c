@@ -15,9 +15,7 @@
 int	ft_charcount(char *str, char c)
 {
 	int count;
-	int	i;
 
-	i = 0;
 	count = 0;
 	while (*str)
 	{
