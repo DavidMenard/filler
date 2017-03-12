@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 20:16:00 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/08 02:50:08 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/12 18:18:54 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ static int	sft_can_place(int x, int y, t_data *data)
 					mychars++;
 				else if(!ft_isfree(data, x + px, y + py))
 					return (0);
-				if (mychars > 1)
-					return (0);
+			//	if (mychars > 1)
+		//			return (0);
 			}
 			px++;
 		}
 		py++;
 	}
-	return (mychars == 1 ? 1 : 0);
+	return (mychars == 1);
 }
 
 static void	sft_find_all_moves(t_data *data)
@@ -101,5 +101,4 @@ void	ft_make_move(t_data *data)
 	}
 	else
 		write(1, "0 0\n", 4);
-	ft_del_moves(data);
 }

@@ -6,7 +6,7 @@
 #    By: dmenard <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/21 07:52:30 by dmenard           #+#    #+#              #
-#    Updated: 2017/03/08 02:21:43 by dmenard          ###   ########.fr        #
+#    Updated: 2017/03/12 17:42:31 by dmenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,5 +51,8 @@ re: fclean all
 $(ODIR)/%.o: $(SDIR)/%.c $(DEP)
 	@mkdir -p $(ODIR)
 	@$(CC) -c -o $@ $< $(CFLAGS) $(IFLAGS)
+
+test:
+	gcc testmain.c src/parser_get_grid.c src/parser_get_piece.c  src/debug.c src/make_move.c  src/clear_turn.c src/char_identifier.c src/get_score.c  -I ./includes/ -I ../libft/ ../libft/libftprintf.a
 
 .PHONY: fclean clean all

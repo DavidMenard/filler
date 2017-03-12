@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testmain.c                                         :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/08 01:13:13 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/12 18:20:50 by dmenard          ###   ########.fr       */
+/*   Created: 2017/03/12 17:04:12 by dmenard           #+#    #+#             */
+/*   Updated: 2017/03/12 17:05:09 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "libft.h"
 
-int main(void)
+int	ft_isupper(char c)
 {
-	t_data data;
-
-	data.moves = NULL;
-	data.pnbr = 2;
-
-	ft_get_grid_size(&data);
-	ft_get_grid(&data);
-	ft_get_piece_size(&data);
-	ft_get_piece(&data);
-
-	ft_print_grid(&data);
-	ft_print_piece(&data);
-	ft_make_move(&data);
-	ft_print_moves(&data);
+	if (c >= 'A' && c <= 'Z')
+		return (1);
 	return (0);
 }

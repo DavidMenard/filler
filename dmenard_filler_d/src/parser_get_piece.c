@@ -6,11 +6,69 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 19:42:51 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/07 23:24:39 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/12 17:24:47 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+static int	sft_get_piece_center_x(char **piece, t_data *data)
+{
+	int	low;
+	int	high;
+	int	i;
+	int	j;
+
+	i = 0;
+	low = INT_MAX;
+	high = 0;
+	while (i < data->py)
+	{
+		j = 0;
+		while (j < data->px)
+		{
+			if (piece[i][j] != '.')
+			{
+				if (low > j)
+					low = j;
+				if (high < j)
+					high = j;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (low + (high - low) / 2);
+}
+
+static int	sft_get_piece_center_y(char **piece, t_data *data)
+{
+	int	low;
+	int	high;
+	int	i;
+	int	j;
+
+	i = 0;
+	low = INT_MAX;
+	high = 0;
+	while (i < data->py)
+	{
+		j = 0;
+		while (j < data->px)
+		{
+			if (piece[i][j] != '.')
+			{
+				if (low > i)
+					low = i;
+				if (high < i)
+					high = i;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (low + (high - low) / 2);
+}
 
 int	ft_get_piece_size(t_data *data)
 {
@@ -57,6 +115,8 @@ int	ft_get_piece(t_data *data)
 	}
 	if (i != data->py)
 		return (0);
+	data->center_piece_x = sft_get_piece_center_x(piece, data);
+	data->center_piece_y = sft_get_piece_center_y(piece, data);
 	data->piece = piece;
 	return (1);
 }

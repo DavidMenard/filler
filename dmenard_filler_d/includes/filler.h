@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:18:14 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/08 02:38:29 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/12 17:13:28 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct		s_data
 	int				gy;
 	int				px;
 	int				py;
+	int				center_piece_x;
+	int				center_piece_y;
 	char			**piece;
 	char			**grid;
 	t_list			*moves;
@@ -42,6 +44,7 @@ typedef struct		s_data
 int				ft_parser(t_data *data);
 int				ft_get_grid_size(t_data *data);
 int				ft_get_grid(t_data *data);
+int				ft_get_grid_turn(t_data *data);
 int				ft_get_piece_size(t_data *data);
 int				ft_get_piece(t_data *data);
 

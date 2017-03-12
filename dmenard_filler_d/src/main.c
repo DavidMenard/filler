@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:16:04 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/08 00:14:47 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/12 18:38:11 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	sft_data_init(t_data *data)
 	data->gy = 0;
 	data->px = 0;
 	data->py = 0;
+	data->center_piece_x = 0;
+	data->center_piece_y = 0;
 	data->pnbr = 0;
 	data->moves = NULL;
 }
@@ -32,10 +34,9 @@ static int	sft_get_turn(t_data *data)
 
 	pgx = data->gx;
 	pgy = data->gy;
-	ft_del_grid(data);
 	if (!(ft_get_grid_size(data)) || data->gx != pgx || data->gy != pgy)
 		return (0);
-	if (!(ft_get_grid(data) || !data->grid))
+	if (!(ft_get_grid_turn(data) || !data->grid))
 		return (0);
 	ft_del_piece(data);
 	if (!(ft_get_piece_size(data)) || data->px < 1 || data->py < 1)
@@ -54,6 +55,9 @@ int main(void)
 		return (-1);
 	ft_make_move(&data);
 	while (sft_get_turn(&data))
+	{
 		ft_make_move(&data);
+		ft_del_moves(&data);
+	}
 	return (0);
 }
