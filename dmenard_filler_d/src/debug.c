@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 12:26:29 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/08 00:31:30 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/15 08:57:14 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void	ft_print_piece(t_data *data)
 	i = 0;
 	while (i < data->py)
 		ft_putendl_fd(data->piece[i++], 2);
+	ft_printf("%ycenter_x:%d\ncenter_y%d\n", 2, data->center_piece_x, data->center_piece_y);///
 	ft_putendl_fd("", 2);
 }

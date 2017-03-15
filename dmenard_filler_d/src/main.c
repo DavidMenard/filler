@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:16:04 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/12 18:38:11 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/15 08:46:13 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int main(void)
 	while (sft_get_turn(&data))
 	{
 		ft_make_move(&data);
-		ft_del_moves(&data);
 	}
 	return (0);
 }

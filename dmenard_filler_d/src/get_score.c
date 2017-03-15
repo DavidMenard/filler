@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 02:19:28 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/12 18:42:57 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/15 09:13:04 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	sft_get_distance_en(t_data *data, int x, int y)
 	int	tx;
 
 	ty = 0;
-	diff = 0;
+	diff = INT_MAX;
 	while (ty < data->gy)
 	{
 		tx = 0;
@@ -29,7 +29,7 @@ static int	sft_get_distance_en(t_data *data, int x, int y)
 			if (ft_ishis(data, tx, ty))
 			{
 				tdiff = ft_abs(ty - y) + ft_abs(tx - x);
-				if (tdiff > diff)
+				if (tdiff < diff)
 					diff = tdiff;
 			}
 			tx++;
@@ -47,7 +47,7 @@ static int	sft_get_distance_en_last(t_data *data, int x, int y)
 	int	tx;
 
 	ty = 0;
-	diff = 0;
+	diff = INT_MAX;
 	while (ty < data->gy)
 	{
 		tx = 0;
@@ -56,7 +56,7 @@ static int	sft_get_distance_en_last(t_data *data, int x, int y)
 			if (ft_ishis(data, tx, ty) && !ft_isupper(data->grid[ty][tx]))
 			{
 				tdiff = ft_abs(ty - y) + ft_abs(tx - x);
-				if (tdiff > diff)
+				if (tdiff < diff)
 					diff = tdiff;
 			}
 			tx++;
@@ -92,5 +92,5 @@ int		ft_get_score(t_data *data, int x, int y)
 	diswall = sft_get_dis_wall(data, x, y);
 	dislast = sft_get_distance_en_last(data, x + data->center_piece_x, y + data->center_piece_y);
 	
-	return (dislast);
+	return (disen + dislast * 2);
 }
