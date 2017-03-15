@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 18:50:41 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/08 07:27:24 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/15 18:32:16 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 # define BAN_HEIGHT	7
 # define BAN_WIDTH	110
+
+# define SHOW_LOADING 0
 
 # define C_RED "\x1b[31m"
 # define C_GREEN "\x1b[32m"
@@ -65,4 +67,6 @@ void				ft_create_win_ban(t_data *data);
 void				ft_update_win_ban(t_data *data);
 
 void				ft_debug_print_turns(t_data *data);
+void				ft_print_grid(char **grid);
+void				ft_print_loading(char **grid);
 #endif

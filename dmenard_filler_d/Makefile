@@ -6,7 +6,7 @@
 #    By: dmenard <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/21 07:52:30 by dmenard           #+#    #+#              #
-#    Updated: 2017/03/12 17:42:31 by dmenard          ###   ########.fr        #
+#    Updated: 2017/03/15 13:27:08 by dmenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 IFLAGS = -I./includes -I../libft
 SRC = main.c parser.c debug.c parser_get_grid.c parser_get_piece.c			\
-	  clear_turn.c make_move.c char_identifier.c get_score.c
+	  clear_turn.c make_move.c char_identifier.c get_score.c score_blocking.c
 
 OBJ = $(addprefix $(ODIR)/, $(addsuffix .o, $(basename $(SRC))))
 LIBFT = ../libft/libftprintf.a

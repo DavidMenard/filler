@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 20:16:00 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/15 09:20:47 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/15 15:48:54 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static int	sft_can_place(int x, int y, t_data *data)
 
 	mychars = 0;
 	py = 0;
-	if (data->px + x > data->gx || data->py + y > data->gy)
-		return (0);
+//	if (data->px + x > data->gx || data->py + y > data->gy)
+//		return (0);
 	while (py < data->py)
 	{
 		px = 0;
@@ -35,8 +35,6 @@ static int	sft_can_place(int x, int y, t_data *data)
 					mychars++;
 				else if(!ft_isfree(data, x + px, y + py))
 					return (0);
-			//	if (mychars > 1)
-		//			return (0);
 			}
 			px++;
 		}
@@ -51,10 +49,10 @@ static void	sft_find_all_moves(t_data *data)
 	int		x;
 	t_move	*new;
 
-	y = 0;
+	y = -(data->py);
 	while (y < data->gy)
 	{
-		x = 0;
+		x = -(data->px);
 		while (x < data->gx)
 		{
 			if (sft_can_place(x, y, data))

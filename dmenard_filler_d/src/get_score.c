@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 02:19:28 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/15 09:13:04 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/15 15:45:22 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,17 @@ int		ft_get_score(t_data *data, int x, int y)
 	int	disen;
 	int	diswall;
 	int	dislast;
+	int	block;
+	//int	control;
 
 	disen = sft_get_distance_en(data, x + data->center_piece_x, y + data->center_piece_y);
 	diswall = sft_get_dis_wall(data, x, y);
 	dislast = sft_get_distance_en_last(data, x + data->center_piece_x, y + data->center_piece_y);
+	block = ft_get_blocking(data, x, y);
+	//control = data->control - ft_get_control(gridcpy);
 	
-	return (disen + dislast * 2);
+	if (!block)
+		return (dislast * 4 + disen);
+	else
+		return (block);
 }

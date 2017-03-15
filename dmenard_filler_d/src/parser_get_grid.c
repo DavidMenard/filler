@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 19:40:40 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/12 18:43:30 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/15 11:54:14 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int	ft_get_grid(t_data *data)
 	while (i < data->gy && (ret = get_next_line(0, &str)) && ret != -1)
 	{
 		grid[i++] = ft_strdup(ft_strchr(str, ' ') + 1);
+		if (ft_strlen(grid[i - 1]) != (size_t)data->gx)
+			return (0);
 		free(str);
 		str = NULL;
 	}
@@ -105,6 +107,8 @@ int	ft_get_grid_turn(t_data *data)
 	while (i < data->gy && (ret = get_next_line(0, &str)) && ret != -1)
 	{
 		grid[i++] = ft_strdup(ft_strchr(str, ' ') + 1);
+		if (ft_strlen(grid[i - 1]) != (size_t)data->gx)
+			return (0);
 		free(str);
 		str = NULL;
 	}
