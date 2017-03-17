@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 02:19:28 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 06:12:34 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/17 09:12:04 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,6 @@ int		ft_get_score(t_data *data, int x, int y)
 	if (!block)
 		return (dislast * 4 + disen);
 	else
-		return (control);//
+		return (control * block);//
 //		return (block);
 }

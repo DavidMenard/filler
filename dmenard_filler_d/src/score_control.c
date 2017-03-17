@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 15:52:57 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 06:06:10 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/17 09:12:29 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static long	sft_get_total(t_data *data, int **vgrid)
 long	ft_get_control(t_data *data, char **grid)
 {
 	ft_setzero(data->vgrid, data->gx, data->gy);
-	ft_print_grid(data);//
+//	ft_print_grid(data);//
 	ft_vgrid_fill_left(data, data->vgrid, grid);
 	ft_vgrid_fill_right(data, data->vgrid, grid);
 	ft_vgrid_fill_top(data, data->vgrid, grid);
