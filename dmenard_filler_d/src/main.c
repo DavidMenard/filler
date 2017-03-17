@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:16:04 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/15 08:46:13 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/17 05:50:13 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 void	sft_data_init(t_data *data)
 {
 	data->grid = NULL;
+	data->vgrid = NULL;
+	data->curr_control = 0;
 	data->piece = NULL;
 	data->gx = 0;
 	data->gy = 0;
@@ -52,6 +54,8 @@ int main(void)
 
 	sft_data_init(&data);
 	if (!ft_parser(&data))
+		return (-1);
+	if (!(data.vgrid = ft_vgrid_init(data.gx, data.gy)))
 		return (-1);
 	ft_make_move(&data);
 	while (sft_get_turn(&data))

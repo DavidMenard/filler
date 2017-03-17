@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 12:26:29 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/15 08:57:14 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/17 05:22:33 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,21 @@ void	ft_print_piece(t_data *data)
 		ft_putendl_fd(data->piece[i++], 2);
 	ft_printf("%ycenter_x:%d\ncenter_y%d\n", 2, data->center_piece_x, data->center_piece_y);///
 	ft_putendl_fd("", 2);
+}
+
+void	ft_print_vgrid(int **vgrid, int x, int y)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < y)
+	{
+		j = 0;
+		while (j < x)
+			ft_printf("%y%3d", 2, vgrid[i][j++]);
+		ft_putchar_fd('\n', 2);
+		i++;
+	}
+	ft_putchar_fd('\n', 2);
 }
