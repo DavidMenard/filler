@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:16:04 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/08 09:08:43 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/17 02:11:21 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,7 @@ static void	sft_standard_colors(void)
 static void	sft_ncurses_init(void)
 {
 	setlocale(LC_ALL, "");
-	freopen("/dev/tty", "r", stdin);
 	initscr();
-	raw();
 	noecho();
 	curs_set(0);
 	start_color();
@@ -81,39 +79,27 @@ static void	sft_data_init(t_data *data)
 	data->p2_name = NULL;
 	data->gridsize_x = 0;
 	data->gridsize_y = 0;
-	data->total_pieces = 0;
 	data->p1_pieces = 0;
 	data->p2_pieces = 0;
-	data->p1_control = 0;
-	data->p2_control = 0;
-	data->neutral_control = 0;
 	data->frame = 0;
 }
 
 int			main(void)
 {
 	t_data	data;
+	t_turn	*turn;
 
 	sft_data_init(&data);
-	ft_parser(&data);
-	data.total_pieces = data.gridsize_x * data.gridsize_y;
 	sft_ncurses_init();
-	ft_get_scores(&data);
-	ft_create_win_grid(&data);
-	keypad(data.win_grid, 1);
-	nodelay(data.win_grid, 1);//
-	ft_create_win_ban(&data);
+	ft_parser(&data);
+	freopen("/dev/tty", "r", stdin);
+	data.turn = 0;
+	ft_update_scores(&data);
 	while (42)
 	{
 		ft_input(&data);
-		data.frame++;
-		if (data.frame > 1024)
-			data.frame = 0;
-		ft_update_win_ban(&data);
-		ft_update_win_grid(&data);
-		wnoutrefresh(data.win_ban);
-		wnoutrefresh(data.win_grid);
-		doupdate();
+		turn = data.turns[data.turn];
+		ft_update_display(&data, turn->grid, turn->p1_moves, turn->p2_moves);//
 	}
 	endwin();
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 13:13:01 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/15 18:18:57 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/17 01:46:21 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,15 @@ static void	sft_print_line(int x, int y, char *str, WINDOW *win_grid)
 	}
 }
 
-void	ft_update_win_grid(t_data *data)
+void	ft_update_win_grid(t_data *data, char **grid)
 {
 	WINDOW	*win_grid;
-	char	**grid;
 	int		i;
 
 	win_grid = data->win_grid;
 	wattron(win_grid, COLOR_PAIR(7));
 	wborder(win_grid, ACS_VLINE, ACS_VLINE, ACS_HLINE, ACS_HLINE,
 	ACS_DIAMOND, ACS_DIAMOND, ACS_DIAMOND, ACS_DIAMOND);
-	grid = data->turns[data->turn]->grid;
 	wattron(win_grid, COLOR_PAIR(1));
 	i = 0;
 	while (grid[i])
@@ -78,6 +76,4 @@ void	ft_create_win_grid(t_data *data)
 		ft_error("Need bigger terminal");
 	}
 	data->win_grid = newwin(data->gridsize_y + 2, data->gridsize_x * 2 + 4, BAN_HEIGHT, (COLS - (data->gridsize_x * 2)) / 2);
-	ft_update_win_grid(data);
-	wrefresh(data->win_grid);
 }

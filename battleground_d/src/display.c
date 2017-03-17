@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/27 18:56:12 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 02:03:29 by dmenard          ###   ########.fr       */
+/*   Created: 2017/03/17 01:06:02 by dmenard           #+#    #+#             */
+/*   Updated: 2017/03/17 01:46:55 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "battle.h"
 
-void	ft_error(char *errmsg)
+void	ft_update_display(t_data *data, char **grid, int p1s, int p2s)
 {
-	endwin();
-	ft_printf("%ybattleground: error: %s\n", 2, errmsg);
-	exit(EXIT_FAILURE);
-}
-
-void	*ft_smalloc(size_t n)
-{
-	void	*ret;
-
-	if (!(ret = malloc(n)))
-		ft_error("Out of memory");
-	return (ret);
+	data->frame++;
+	if (data->frame > 1024)
+		data->frame = 0;
+	ft_update_win_ban(data, p1s, p2s);
+	ft_update_win_grid(data, grid);
+	wnoutrefresh(data->win_ban);
+	wnoutrefresh(data->win_grid);
+	doupdate();
 }

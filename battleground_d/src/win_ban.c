@@ -6,13 +6,13 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 15:13:16 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/08 09:08:40 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/17 01:50:51 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "battle.h"
 
-static void	sft_put_name(char *name, t_data *data, int x, int player)
+static void	sft_put_name(char *name, t_data *data, int x, int player, int score)
 {
 	WINDOW	*win_ban;
 	int		tx;
@@ -29,10 +29,7 @@ static void	sft_put_name(char *name, t_data *data, int x, int player)
 	wprintw(win_ban, "[%s]", name);
 	wmove(win_ban, BAN_HEIGHT / 2 + 1, x - ((ft_strlen(tmp) + 2) / 2));
 	free(tmp);
-	if (player == 1)
-		wprintw(win_ban, "(%dP)", data->p1_pieces);
-	else
-		wprintw(win_ban, "(%dP)", data->p2_pieces);
+	wprintw(win_ban, "(%dP)", score);
 }
 
 static void	sft_put_banner(t_data *data, int x)
@@ -42,7 +39,6 @@ static void	sft_put_banner(t_data *data, int x)
 	win_ban = data->win_ban;
 
 	wattron(win_ban, COLOR_PAIR(7));
-//	x += data->frame % 2 - 1;
 	wmove(win_ban, 1, x);
 	wattron(win_ban, COLOR_PAIR(8 + data->frame % 2));
 	wprintw(win_ban, " ____        _   _   _       ____                           _ ");
@@ -62,27 +58,27 @@ static void	sft_put_banner(t_data *data, int x)
 	else
 		wprintw(win_ban, "(,~,~/ \\~,,~|\\~,)\\,~|,|\\~,~)\\~~~,|~|  \\,~~/ (,~~,|~| |~|\\~~,~)");
 	wattron(win_ban, COLOR_PAIR(7));
-	wmove(win_ban, 1, x + 39);// + data->frame % 6 - 3);
+	wmove(win_ban, 1, x + 39);
 	wprintw(win_ban, "FILLER");
 }
 
-void	ft_update_win_ban(t_data *data)
+void	ft_update_win_ban(t_data *data, int p1s, int p2s)
 {
 	WINDOW	*win_ban;
 	
 	win_ban = data->win_ban;
 	werase(win_ban);
-	wattron(win_ban, COLOR_PAIR(13));// + data->frame % 2));
+	wattron(win_ban, COLOR_PAIR(13));
 	wmove(win_ban, 6, 0);
 	whline(win_ban, '=', BAN_WIDTH);
-	wattron(win_ban, COLOR_PAIR(11));// + data->frame % 2));
+	wattron(win_ban, COLOR_PAIR(11));
 	wmove(win_ban, 6, 0);
 	waddch(win_ban, '[');
 	wmove(win_ban, 6, BAN_WIDTH - 1);
 	waddch(win_ban, ']');
 	sft_put_banner(data, 24);
-	sft_put_name(data->p1_name, data, 12, 1);
-	sft_put_name(data->p2_name, data, 97, 2);
+	sft_put_name(data->p1_name, data, 12, 1, p1s);
+	sft_put_name(data->p2_name, data, 97, 2, p2s);
 }
 void	ft_create_win_ban(t_data *data)
 {
@@ -95,6 +91,4 @@ void	ft_create_win_ban(t_data *data)
 		ft_error("Need a bigger Terminal");
 	}
 	win_ban = data->win_ban;
-	ft_update_win_ban(data);
-	wrefresh(win_ban);
 }

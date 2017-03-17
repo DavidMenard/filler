@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 18:50:41 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/15 18:32:16 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/17 02:11:15 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 typedef struct		s_turn
 {
 	char			**grid;
+	int				p1_moves;
+	int				p2_moves;
 }					t_turn;
 
 typedef struct		s_data
@@ -42,29 +44,26 @@ typedef struct		s_data
 	int				gridsize_y;
 	WINDOW			*win_grid;
 	WINDOW			*win_ban;
-	int				total_pieces;
 	int				p1_pieces;
 	int				p2_pieces;
-	int				p1_control;
-	int				p2_control;
-	int				neutral_control;
 	int				frame;
 }					t_data;
 
 void				*ft_smalloc(size_t n);
 void				ft_error(char *errmsg);
-int				ft_input(t_data *data);
-void				ft_get_scores(t_data *data);
-void				ft_get_scores_back(t_data *data);
+int					ft_input(t_data *data);
+void				ft_update_scores(t_data *data);
 
 void				ft_parser(t_data *data);
 void				ft_get_turns(t_data *data);
 
-void				ft_update_win_grid(t_data *data);
+void				ft_update_display(t_data *data, char **grid, int p1s, int p2s);
+
+void				ft_update_win_grid(t_data *data, char **grid);
 void				ft_create_win_grid(t_data *data);
 
 void				ft_create_win_ban(t_data *data);
-void				ft_update_win_ban(t_data *data);
+void				ft_update_win_ban(t_data *data, int p1s, int p2s);
 
 void				ft_debug_print_turns(t_data *data);
 void				ft_print_grid(char **grid);

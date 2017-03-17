@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 18:49:48 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/02 18:53:10 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/17 01:39:43 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ void		ft_parser(t_data *data)
 	sft_get_grid_size(data);
 	if (!data->gridsize_x || !data->gridsize_y)
 		ft_error("invalid grid size");
+	ft_create_win_grid(data);
+	keypad(data->win_grid, 1);
+	nodelay(data->win_grid, 1);
+	ft_create_win_ban(data);
 	ft_get_turns(data);
 	if (!data->turns)
 		ft_error("No turns found");

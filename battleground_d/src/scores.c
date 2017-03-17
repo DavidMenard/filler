@@ -6,26 +6,11 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 18:03:11 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/02 18:59:09 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/17 01:11:34 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "battle.h"
-
-static int	sft_get_percentage(int p, int total)
-{
-	return (((float)p / (float)total) * 100);
-}
-
-static void	sft_update_percentage(t_data *data)
-{
-	int neut;
-
-	data->p1_control = sft_get_percentage(data->p1_pieces, data->total_pieces);
-	data->p2_control = sft_get_percentage(data->p2_pieces, data->total_pieces);
-	neut = data->total_pieces - data->p1_pieces - data->p2_pieces;
-	data->neutral_control = sft_get_percentage(neut, data->total_pieces);
-}
 
 void		ft_get_scores_back(t_data *data)
 {
@@ -56,7 +41,6 @@ void		ft_get_scores_back(t_data *data)
 		}
 		i++;
 	}
-	sft_update_percentage(data);
 }
 
 void		ft_get_scores(t_data *data)
@@ -88,5 +72,4 @@ void		ft_get_scores(t_data *data)
 		}
 		i++;
 	}
-	sft_update_percentage(data);
 }

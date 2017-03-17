@@ -6,11 +6,31 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 10:37:39 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/15 09:44:19 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/17 02:11:20 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "battle.h"
+
+static int	sft_whoplayed(char **grid)
+{
+	int i;
+
+	while (*grid)
+	{
+		i = 0;
+		while ((*grid)[i])
+		{
+			if ((*grid)[i] == 'o')
+				return (1);
+			if ((*grid)[i] == 'x')
+				return (2);
+			i++;
+		}
+		grid++;
+	}
+	return (0);
+}
 
 static t_turn	*sft_create_turn(int len, int lines)
 {
@@ -35,10 +55,6 @@ static t_turn	*sft_create_turn(int len, int lines)
 		i++;
 	}
 	free(str);
-	if (!SHOW_LOADING)
-		ft_putchar('>');//
-	else
-		ft_print_grid(turn->grid);
 	return (turn);
 }
 
@@ -65,21 +81,26 @@ void			ft_get_turns(t_data *data)
 	char	*str;
 	int		ret;
 	t_list	*head;
+	t_turn	*turn;
 
 	str = NULL;
 	head = NULL;
-	if (!SHOW_LOADING)
-		ft_putstr(C_GREEN);
 	while ((ret = get_next_line(0, &str)))
 	{
 		if (ret == -1)
 			ft_error("Read error");
 		if (!ft_strncmp(str, "    ", 4))
-			ft_lstadd(&head, ft_lstnew_ref(sft_create_turn(
-			data->gridsize_x, data->gridsize_y), sizeof(t_turn)));
+		{
+			turn = sft_create_turn(data->gridsize_x, data->gridsize_y);
+			data->p1_pieces += sft_whoplayed(turn->grid) == 1;
+			data->p2_pieces += sft_whoplayed(turn->grid) == 2;
+			turn->p1_moves = data->p1_pieces;
+			turn->p2_moves = data->p2_pieces;
+			ft_lstadd(&head, ft_lstnew_ref(turn, sizeof(t_turn)));
+			ft_update_display(data, turn->grid, turn->p1_moves, turn->p2_moves);
+		}
 		free(str);
 	}
 	free(str);
-	ft_putstr(C_RESET);
 	sft_transfer_turns(data, head);
 }
