@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 18:50:41 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 02:11:15 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/17 03:01:56 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct		s_data
 	int				p1_pieces;
 	int				p2_pieces;
 	int				frame;
+	int				col_frame;
 }					t_data;
 
 void				*ft_smalloc(size_t n);

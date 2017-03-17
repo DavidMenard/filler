@@ -6,36 +6,39 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 13:13:01 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 01:46:21 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/17 04:30:18 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "battle.h"
 
-static void	sft_print_line(int x, int y, char *str, WINDOW *win_grid)
+static void	sft_print_line(int x, int y, char *str, WINDOW *win_grid, t_data *data)
 {
+	int	i;
+
 	wmove(win_grid, y, x);
-	while (*str)
+	i = 0;
+	while (str[i])
 	{
 		wattron(win_grid, COLOR_PAIR(1));
-		if (*str == '.')
+		if (str[i] == '.')
 		{
 			waddch(win_grid, ' ');
 			waddch(win_grid, ' ');
 		}
-		else if (*str == 'O' || *str == 'o')
+		else if (str[i] == 'O' || str[i] == 'o')
 		{
-			if (*str == 'O')
-				wattron(win_grid, COLOR_PAIR(3));
+			if (str[i] == 'O')
+				wattron(win_grid, COLOR_PAIR(14 + data->col_frame + i % 2));
 			else
 				wattron(win_grid, COLOR_PAIR(4));
 			waddch(win_grid, '[');
 			waddch(win_grid, ']');
 		}
-		else if (*str == 'X' || *str == 'x')
+		else if (str[i] == 'X' || str[i] == 'x')
 		{
-			if (*str == 'X')
-				wattron(win_grid, COLOR_PAIR(5));
+			if (str[i] == 'X')
+				wattron(win_grid, COLOR_PAIR(17 + data->col_frame + i % 2));
 			else
 				wattron(win_grid, COLOR_PAIR(6));
 			waddch(win_grid, '[');
@@ -46,7 +49,7 @@ static void	sft_print_line(int x, int y, char *str, WINDOW *win_grid)
 			waddch(win_grid, *str);
 			waddch(win_grid, *str);
 		}
-		str++;
+		i++;
 	}
 }
 
@@ -63,7 +66,8 @@ void	ft_update_win_grid(t_data *data, char **grid)
 	i = 0;
 	while (grid[i])
 	{
-		sft_print_line(2, i + 1, grid[i], win_grid);
+		data->col_frame = (i % 2);
+		sft_print_line(2, i + 1, grid[i], win_grid, data);
 		i++;
 	}
 }

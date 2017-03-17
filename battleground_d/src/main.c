@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:16:04 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 02:11:21 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/17 04:25:09 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 static void	sft_custome_colors(void)
 {
+	init_color(40, 1000, 454, 196); //p1 dynamic
+	init_color(41, 1000, 536, 210); //p1 dynamic
+	init_color(42, 1000, 590, 220); //p1 dynamic
+	init_color(43, 492, 760, 824); //p2 dynamic
+	init_color(44, 560, 816, 876); //p2 dynamic
+	//init_color(45, 584, 820, 876); //p2 dynamic
+	init_color(45, 700, 900, 1000); //p2 dynamic
+	
 	init_color(30, 1000, 454, 196); //p1
 	init_color(31, 492, 760, 824); //p2
 	init_color(32, 600, 200, 50); //FLAMES !
@@ -36,6 +44,14 @@ static void	sft_custome_colors(void)
 	init_pair(11, 35, COLOR_BLACK);
 	init_pair(12, 36, COLOR_BLACK);
 	init_pair(13, 37, COLOR_BLACK);
+
+	init_pair(14, 40, COLOR_BLACK);//p1 dynamic
+	init_pair(15, 41, COLOR_BLACK);//p1 dynamic
+	init_pair(16, 42, COLOR_BLACK);//p1 dynamic
+	
+	init_pair(17, 43, COLOR_BLACK);//p2 dynamic
+	init_pair(18, 44, COLOR_BLACK);//p2 dynamic
+	init_pair(19, 45, COLOR_BLACK);//p2 dynamic
 }
 
 
@@ -93,7 +109,7 @@ int			main(void)
 	sft_ncurses_init();
 	ft_parser(&data);
 	freopen("/dev/tty", "r", stdin);
-	data.turn = 0;
+	data.turn = data.turns_nbr - 1;
 	ft_update_scores(&data);
 	while (42)
 	{

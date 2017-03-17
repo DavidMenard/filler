@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 13:18:37 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 02:11:03 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/17 04:23:47 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,18 @@ int	ft_input(t_data *data)
 			ret = 1;
 			ft_update_scores(data);
 		}
+	}
+	else if (key == 'e')
+	{
+		data->turn = data->turns_nbr - 1;
+		ret = 1;
+		ft_update_scores(data);
+	}
+	else if (key == 's')
+	{
+		data->turn = 0;
+		ret = 1;
+		ft_update_scores(data);
 	}
 	return (ret);
 }
