@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 19:40:40 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/18 14:35:39 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 17:36:21 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,21 @@ int				ft_get_grid(t_data *data)
 	int		ret;
 	char	**grid;
 	int		i;
+	char	*tstr;
 
 	if (!(grid = (char**)malloc(sizeof(char*) * data->gy)))
 		return (0);
 	str = NULL;
 	ret = get_next_line(0, &str);
-	if (!ret || ret == -1 || strncmp(str, "    0", 5))
+	if (!ret || ret == -1 || strncmp(str, "    0", 5) || (i = 0))
 		return (0);
 	free(str);
-	i = 0;
 	while (i < data->gy && (ret = get_next_line(0, &str)) && ret != -1)
 	{
-		grid[i++] = ft_strdup(ft_strchr(str, ' ') + 1);
-		if (ft_strlen(grid[i - 1]) != (size_t)data->gx)
+		if (!(tstr = ft_strchr(str, ' ')) ||
+			ft_strlen(tstr + 1) != (size_t)data->gx)
 			return (0);
+		grid[i++] = ft_strdup(tstr + 1);
 		free(str);
 		str = NULL;
 	}
