@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 20:16:00 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/18 14:28:39 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 17:00:55 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,12 @@ void			ft_make_move(t_data *data)
 	t_move *best;
 
 	data->curr_control = ft_get_control(data, data->grid);
+	if (DEBUG_GRID)
+		ft_print_grid(data);
+	if (DEBUG_VGRID)
+		ft_print_vgrid(data->vgrid, data->gx, data->gy);
+	if (DEBUG_PIECE)
+		ft_print_piece(data);
 	sft_find_all_moves(data);
 	if (data->moves)
 	{
@@ -97,5 +103,7 @@ void			ft_make_move(t_data *data)
 	}
 	else
 		write(1, "0 0\n", 4);
+	if (DEBUG_MOVES)
+		ft_print_moves(data);
 	ft_del_moves(data);
 }

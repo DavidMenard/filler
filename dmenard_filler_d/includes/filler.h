@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:18:14 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/18 14:25:12 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 17:04:15 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define FILLER_H
 
 # include "libft.h"
+
+# define DEBUG_USAGE	0
+# define DEBUG_GRID		0
+# define DEBUG_MOVES	0
+# define DEBUG_VGRID	0
+# define DEBUG_PIECE	0
 
 typedef struct		s_score
 {

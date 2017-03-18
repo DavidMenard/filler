@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 12:26:29 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/18 14:12:03 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 16:57:18 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_print_moves(t_data *data)
 	while (nav)
 	{
 		move = (t_move*)nav->content;
-		ft_printf("%yX:%d\nY:%d\nS:%d\n", 2, move->x, move->y, move->score);
+		ft_printf("%yX:%d\nY:%d\nS:%d\n\n", 2, move->x, move->y, move->score);
 		nav = nav->next;
 	}
 }

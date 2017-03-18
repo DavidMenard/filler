@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:16:04 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/18 14:26:22 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 17:05:03 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,30 @@ static int	sft_get_turn(t_data *data)
 	return (1);
 }
 
+static void	sft_usage(void)
+{
+	ft_putendl_fd("dmenard.filler: usage:", 2);
+	ft_putendl_fd("\tg for grid", 2);
+	ft_putendl_fd("\tm for moves", 2);
+	ft_putendl_fd("\tp for piece", 2);
+	ft_putendl_fd("\tv for value_grid", 2);
+	ft_putendl_fd("\tu for usage", 2);
+}
+
 int			main(void)
 {
 	t_data data;
 
 	sft_data_init(&data);
+	if (DEBUG_USAGE)
+		sft_usage();
 	if (!ft_parser(&data))
 		return (-1);
 	if (!(data.vgrid = ft_vgrid_init(data.gx, data.gy)))
 		return (-1);
+	ft_setzero(data.vgrid, data.gx, data.gy);
 	ft_make_move(&data);
 	while (sft_get_turn(&data))
-	{
 		ft_make_move(&data);
-	}
 	return (0);
 }
