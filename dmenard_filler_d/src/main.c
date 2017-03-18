@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:16:04 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 05:50:13 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 09:46:51 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	sft_data_init(t_data *data)
 	data->center_piece_y = 0;
 	data->pnbr = 0;
 	data->moves = NULL;
+	data->stage = 0;
 }
 
 static int	sft_get_turn(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 20:16:00 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 05:53:53 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 09:53:06 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	ft_make_move(t_data *data)
 	t_move *best;
 
 	data->curr_control = ft_get_control(data, data->grid);
-	ft_printf("%y%d\n", 2, data->curr_control);//
 	sft_find_all_moves(data);
 	if (data->moves)
 	{

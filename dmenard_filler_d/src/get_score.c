@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 02:19:28 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 09:12:04 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 13:32:45 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,22 @@ static void sft_del_cpygrid(t_data *data, char **cpygrid)
 	free(cpygrid);
 }
 
+static int	sft_center_free(t_data *data)
+{
+	int gx;
+	int gy;
+
+	gx = data->gx / 2;
+	gy = data->gy / 2;
+
+	if (ft_isfree(data, gx, gy) && ft_isfree(data, gx + 1, gy) &&
+			ft_isfree(data, gx, gy + 1) && ft_isfree(data, gx + 1, gy + 1))
+	{
+		return (1);
+	}
+	return (0);
+}
+
 int		ft_get_score(t_data *data, int x, int y)
 {
 	int		disen;
@@ -131,17 +147,30 @@ int		ft_get_score(t_data *data, int x, int y)
 	long	control;
 	char	 **tgrid;
 
+	block = ft_get_blocking(data, x, y);
 	tgrid = sft_cpygrid(data, x, y);
 	disen = sft_get_distance_en(data, x + data->center_piece_x, y + data->center_piece_y);
-	diswall = sft_get_dis_wall(data, x, y);
+	diswall = sft_get_dis_wall(data, x + data->center_piece_x, y + data->center_piece_y);
 	dislast = sft_get_distance_en_last(data, x + data->center_piece_x, y + data->center_piece_y);
-	block = ft_get_blocking(data, x, y);
-	control = ft_get_control(data, tgrid);//new grid
-	
+	control = (ft_get_control(data, tgrid) - data->curr_control) / (data->gx * data->gy / 2);//new grid
+	//
+/*	ft_printf("%ydisen:%d\n", 2, disen);
+	ft_printf("%ydislast%d\n", 2, dislast);
+	ft_printf("%yblock:%d\n", 2, block);
+	ft_printf("%ycontrol:%d\n", 2, control);
+	ft_printf("%ydiwall:%d\n\n", 2, diswall);
+*/	//
 	sft_del_cpygrid(data, tgrid);
+	if (data->stage == 0)
+	{
+		if (!block && sft_center_free(data))
+			return (-diswall + control);
+		else
+			data->stage++;
+	}
 	if (!block)
 		return (dislast * 4 + disen);
 	else
-		return (control * block);//
-//		return (block);
+		return (control);// * block);
+	//	return (block * control + block / 2);
 }

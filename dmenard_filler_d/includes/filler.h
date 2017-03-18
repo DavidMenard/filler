@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:18:14 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 05:50:00 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 09:46:42 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_data
 	char			**grid;
 	int				**vgrid;
 	long			curr_control;
+	int				stage;
 	t_list			*moves;
 }					t_data;
 
