@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 10:37:39 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/18 14:53:40 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 17:53:08 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static t_turn	*sft_create_turn(int len, int lines)
 	int		ret;
 	t_turn	*turn;
 	int		i;
+	char	*tstr;
 
 	turn = (t_turn*)ft_smalloc(sizeof(t_turn));
 	turn->grid = (char**)ft_smalloc(sizeof(char*) * lines + 1);
@@ -45,9 +46,10 @@ static t_turn	*sft_create_turn(int len, int lines)
 	i = 0;
 	while ((ret = get_next_line(0, &str)) && i < lines)
 	{
-		if (ret == -1)
-			ft_error("Read error");
-		turn->grid[i] = ft_strdup(ft_strchr(str, ' ') + 1);
+		if (ret == -1 || !(tstr = ft_strchr(str, ' ')) ||
+			ft_strlen(tstr + 1) != (size_t)len)
+			ft_error("input error");
+		turn->grid[i] = ft_strdup(tstr + 1);
 		if (ft_strlen(turn->grid[i]) != (size_t)len)
 			ft_error("grid line inconsistant");
 		free(str);
