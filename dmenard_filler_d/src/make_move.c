@@ -6,13 +6,13 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 20:16:00 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/18 09:53:06 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 14:28:39 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-static int	sft_can_place(int x, int y, t_data *data)
+static int		sft_can_place(int x, int y, t_data *data)
 {
 	int		mychars;
 	int		px;
@@ -20,8 +20,6 @@ static int	sft_can_place(int x, int y, t_data *data)
 
 	mychars = 0;
 	py = 0;
-//	if (data->px + x > data->gx || data->py + y > data->gy)
-//		return (0);
 	while (py < data->py)
 	{
 		px = 0;
@@ -33,7 +31,7 @@ static int	sft_can_place(int x, int y, t_data *data)
 					return (0);
 				if (ft_ismine(data, x + px, y + py))
 					mychars++;
-				else if(!ft_isfree(data, x + px, y + py))
+				else if (!ft_isfree(data, x + px, y + py))
 					return (0);
 			}
 			px++;
@@ -43,7 +41,7 @@ static int	sft_can_place(int x, int y, t_data *data)
 	return (mychars == 1);
 }
 
-static void	sft_find_all_moves(t_data *data)
+static void		sft_find_all_moves(t_data *data)
 {
 	int		y;
 	int		x;
@@ -52,14 +50,14 @@ static void	sft_find_all_moves(t_data *data)
 	y = -(data->py);
 	while (y < data->gy)
 	{
-		x = -(data->px);
-		while (x < data->gx)
+		x = -(data->px) - 1;
+		while (++x < data->gx)
 		{
 			if (sft_can_place(x, y, data))
 			{
 				if (!(new = (t_move*)malloc(sizeof(t_move))))
 				{
-					data->moves = NULL;//
+					data->moves = NULL;
 					return ;
 				}
 				new->x = x;
@@ -67,7 +65,6 @@ static void	sft_find_all_moves(t_data *data)
 				new->score = ft_get_score(data, x, y);
 				ft_lstadd(&data->moves, ft_lstnew_ref(new, sizeof(t_move*)));
 			}
-			x++;
 		}
 		y++;
 	}
@@ -87,7 +84,7 @@ static t_move	*sft_find_best_move(t_list *head)
 	return ((t_move*)best->content);
 }
 
-void	ft_make_move(t_data *data)
+void			ft_make_move(t_data *data)
 {
 	t_move *best;
 

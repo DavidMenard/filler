@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 12:22:18 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/15 13:40:43 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 14:36:44 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static int	sft_check_proxy(t_data *data, int x, int y)
 	return (count);
 }
 
-int	ft_get_blocking(t_data *data, int x, int y)
+int			ft_get_blocking(t_data *data, int x, int y)
 {
 	int	i;
 	int	j;
 	int count;
-	
+
 	count = 0;
 	i = 0;
 	while (i < data->py)

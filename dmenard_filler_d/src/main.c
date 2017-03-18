@@ -6,14 +6,14 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 14:16:04 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/18 09:46:51 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 14:26:22 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 #include <fcntl.h>
 
-void	sft_data_init(t_data *data)
+void		sft_data_init(t_data *data)
 {
 	data->grid = NULL;
 	data->vgrid = NULL;
@@ -49,7 +49,7 @@ static int	sft_get_turn(t_data *data)
 	return (1);
 }
 
-int main(void)
+int			main(void)
 {
 	t_data data;
 

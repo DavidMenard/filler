@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 04:54:22 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 06:17:56 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 14:09:53 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	ft_vgrid_fill_top(t_data *data, int **vgrid, char **grid)
 	}
 }
 
-void	ft_vgrid_fill_bottom(t_data *data, int **vgrid, char **grid)
+void	ft_vgrid_fill_bot(t_data *data, int **vgrid, char **grid)
 {
 	int i;
 	int j;

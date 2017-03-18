@@ -6,13 +6,13 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 19:40:40 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/15 11:54:14 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 14:35:39 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int	ft_get_grid_size(t_data *data)
+int				ft_get_grid_size(t_data *data)
 {
 	char	*str;
 	char	*temp;
@@ -40,7 +40,7 @@ int	ft_get_grid_size(t_data *data)
 	return (1);
 }
 
-int	ft_get_grid(t_data *data)
+int				ft_get_grid(t_data *data)
 {
 	char	*str;
 	int		ret;
@@ -68,16 +68,16 @@ int	ft_get_grid(t_data *data)
 	return (1);
 }
 
-static void	sft_grid_compare(char **new, char **old, int gx, int gy, t_data *data)
+static void		sft_grid_compare(char **new, char **old, t_data *data)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < gy)
+	while (i < data->gy)
 	{
 		j = 0;
-		while (j < gx)
+		while (j < data->gx)
 		{
 			if (data->pnbr == 1 && new[i][j] == 'X' && old[i][j] != 'X')
 				new[i][j] = 'x';
@@ -89,7 +89,7 @@ static void	sft_grid_compare(char **new, char **old, int gx, int gy, t_data *dat
 	}
 }
 
-int	ft_get_grid_turn(t_data *data)
+int				ft_get_grid_turn(t_data *data)
 {
 	char	*str;
 	int		ret;
@@ -100,10 +100,9 @@ int	ft_get_grid_turn(t_data *data)
 		return (0);
 	str = NULL;
 	ret = get_next_line(0, &str);
-	if (!ret || ret == -1 || strncmp(str, "    0", 5))
+	if (!ret || ret == -1 || strncmp(str, "    0", 5) || (i = 0))
 		return (0);
 	free(str);
-	i = 0;
 	while (i < data->gy && (ret = get_next_line(0, &str)) && ret != -1)
 	{
 		grid[i++] = ft_strdup(ft_strchr(str, ' ') + 1);
@@ -113,7 +112,7 @@ int	ft_get_grid_turn(t_data *data)
 		str = NULL;
 	}
 	free(str);
-	sft_grid_compare(grid, data->grid, data->gx, data->gy, data);
+	sft_grid_compare(grid, data->grid, data);
 	ft_del_grid(data);
 	data->grid = grid;
 	return (1);

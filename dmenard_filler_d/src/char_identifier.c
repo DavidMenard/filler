@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 23:41:50 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 04:59:28 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 14:10:36 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		ft_isfree(t_data *data, int x, int y)
 		return (0);
 	if (data->grid[y][x] == '.')
 		return (1);
-	return(0);
+	return (0);
 }
 
 int		ft_charplayer(char c)

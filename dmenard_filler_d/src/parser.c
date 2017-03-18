@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 08:28:24 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/07 20:01:30 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 14:29:36 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ static int	sft_getpnbr(t_data *data)
 		return (0);
 	}
 	data->pnbr = ft_atoi(tstr);
-	free (str);
+	free(str);
 	return (1);
 }
 
-int		ft_parser(t_data *data)
+int			ft_parser(t_data *data)
 {
 	if (!sft_getpnbr(data))
 		return (0);
-	if (!(ft_get_grid_size(data)) || data->gx  < 1 || data->gy < 1)
+	if (!(ft_get_grid_size(data)) || data->gx < 1 || data->gy < 1)
 		return (0);
 	if (!(ft_get_grid(data) || !data->grid))
 		return (0);

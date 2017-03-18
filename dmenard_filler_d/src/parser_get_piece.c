@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 19:42:51 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/12 17:24:47 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 14:36:12 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	sft_get_piece_center_y(char **piece, t_data *data)
 	return (low + (high - low) / 2);
 }
 
-int	ft_get_piece_size(t_data *data)
+int			ft_get_piece_size(t_data *data)
 {
 	char	*str;
 	int		ret;
@@ -96,7 +96,7 @@ int	ft_get_piece_size(t_data *data)
 	return (1);
 }
 
-int	ft_get_piece(t_data *data)
+int			ft_get_piece(t_data *data)
 {
 	char	*str;
 	int		ret;
