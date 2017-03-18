@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 18:49:48 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 01:39:43 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 17:09:41 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void	sft_get_players(t_data *data)
 			data->p1_name = sft_extract_name(str);
 		free(str);
 	}
+	free(str);
 	while ((ret = get_next_line(0, &str)) && !data->p2_name)
 	{
 		if (ret == -1)
