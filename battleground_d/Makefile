@@ -6,7 +6,7 @@
 #    By: dmenard <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/21 07:52:30 by dmenard           #+#    #+#              #
-#    Updated: 2017/03/17 01:20:03 by dmenard          ###   ########.fr        #
+#    Updated: 2017/03/18 14:54:40 by dmenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS = -Wall -Wextra -Werror
 IFLAGS = -I./includes -I../libft
 NCURSES = -lncurses
 SRC = main.c parser.c parser_get_turns.c error.c print_debug.c win_grid.c \
-	  input.c win_ban.c print_loading.c display.c
+	  input.c win_ban.c display.c colors.c
 
 OBJ = $(addprefix $(ODIR)/, $(addsuffix .o, $(basename $(SRC))))
 LIBFT = ../libft/libftprintf.a

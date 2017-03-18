@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 13:18:37 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 04:23:47 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 14:44:08 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_update_scores(t_data *data)
 	data->p2_pieces = data->turns[data->turn]->p2_moves;
 }
 
-int	ft_input(t_data *data)
+int		ft_input(t_data *data)
 {
 	int	key;
 	int	ret;
@@ -30,35 +30,15 @@ int	ft_input(t_data *data)
 		endwin();
 		exit(EXIT_SUCCESS);
 	}
-	else if (key == KEY_DOWN || key == KEY_RIGHT)
-	{
-		if (data->turn < data->turns_nbr - 1)
-		{
-			data->turn++;
-			ret = 1;
-			ft_update_scores(data);
-		}
-	}
-	else if (key == KEY_UP || key == KEY_LEFT)
-	{
-		if (data->turn > 0)
-		{
-			data->turn--;
-			ret = 1;
-			ft_update_scores(data);
-		}
-	}
+	else if ((key == KEY_DOWN || key == KEY_RIGHT)
+	&& data->turn < data->turns_nbr - 1)
+		data->turn++;
+	else if ((key == KEY_UP || key == KEY_LEFT) && data->turn > 0)
+		data->turn--;
 	else if (key == 'e')
-	{
 		data->turn = data->turns_nbr - 1;
-		ret = 1;
-		ft_update_scores(data);
-	}
 	else if (key == 's')
-	{
 		data->turn = 0;
-		ret = 1;
-		ft_update_scores(data);
-	}
+	ft_update_scores(data);
 	return (ret);
 }

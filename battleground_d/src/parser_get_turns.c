@@ -6,13 +6,13 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 10:37:39 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 02:11:20 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 14:53:40 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "battle.h"
 
-static int	sft_whoplayed(char **grid)
+static int		sft_whoplayed(char **grid)
 {
 	int i;
 

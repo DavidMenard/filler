@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 18:50:41 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 03:01:56 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 15:27:46 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ void				ft_update_scores(t_data *data);
 void				ft_parser(t_data *data);
 void				ft_get_turns(t_data *data);
 
-void				ft_update_display(t_data *data, char **grid, int p1s, int p2s);
+void				ft_custome_colors(void);
+void				ft_standard_colors(void);
+void				ft_update_display(
+					t_data *data, char **grid, int p1s, int p2s);
 
 void				ft_update_win_grid(t_data *data, char **grid);
 void				ft_create_win_grid(t_data *data);
@@ -68,5 +71,4 @@ void				ft_update_win_ban(t_data *data, int p1s, int p2s);
 
 void				ft_debug_print_turns(t_data *data);
 void				ft_print_grid(char **grid);
-void				ft_print_loading(char **grid);
 #endif

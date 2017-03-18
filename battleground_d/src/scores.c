@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 18:03:11 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/17 01:11:34 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 14:56:16 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void		ft_get_scores_back(t_data *data)
 
 	turn = data->turns[data->turn];
 	stop = 0;
-	i = 0;
-	while (turn->grid[i] && !stop)
+	i = -1;
+	while (turn->grid[++i] && !stop)
 	{
-		j = 0;
-		while (turn->grid[i][j] && !stop)
+		j = -1;
+		while (turn->grid[i][++j] && !stop)
 		{
 			if (turn->grid[i][j] == 'o')
 			{
@@ -37,9 +37,7 @@ void		ft_get_scores_back(t_data *data)
 				data->p2_pieces--;
 				stop = 1;
 			}
-			j++;
 		}
-		i++;
 	}
 }
 
@@ -52,11 +50,11 @@ void		ft_get_scores(t_data *data)
 
 	turn = data->turns[data->turn];
 	stop = 0;
-	i = 0;
-	while (turn->grid[i] && !stop)
+	i = -1;
+	while (turn->grid[++i] && !stop)
 	{
-		j = 0;
-		while (turn->grid[i][j] && !stop)
+		j = -1;
+		while (turn->grid[i][++j] && !stop)
 		{
 			if (turn->grid[i][j] == 'o')
 			{
@@ -68,8 +66,6 @@ void		ft_get_scores(t_data *data)
 				data->p2_pieces++;
 				stop = 1;
 			}
-			j++;
 		}
-		i++;
 	}
 }

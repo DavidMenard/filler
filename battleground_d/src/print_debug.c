@@ -6,13 +6,13 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 12:07:33 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/15 09:28:20 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/18 14:54:02 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "battle.h"
 
-void	ft_print_grid(char **grid)
+void		ft_print_grid(char **grid)
 {
 	while (*grid)
 	{
