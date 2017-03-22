@@ -6,7 +6,7 @@
 /*   By: dmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/18 14:14:08 by dmenard           #+#    #+#             */
-/*   Updated: 2017/03/18 22:33:15 by dmenard          ###   ########.fr       */
+/*   Updated: 2017/03/22 08:15:46 by dmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int				ft_get_score(t_data *data, int x, int y)
 	if (data->stage == 0)
 	{
 		if (!(s.block) && sft_center_free(data))
-			return (-(s.diswall) + s.control);
+			return (-(s.diswall));
 		else
 			data->stage++;
 	}
